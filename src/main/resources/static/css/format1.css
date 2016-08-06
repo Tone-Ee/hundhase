@@ -1,0 +1,91 @@
+body {
+    font-family: 'Gentium Book Basic', serif;
+    background-color: lightgrey;
+}
+.sidebar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 175px;
+    height: 100%;
+    float: left;
+}
+
+.content {
+    overflow: hidden;
+    text-align: center;
+    margin-left:175px;
+}
+
+a {
+    color: black;
+    text-decoration:none;
+}
+
+ul {
+    list-style:none;
+}
+
+.inline-list {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inline-list li {
+    display: inline-table;
+    padding:7px;
+}
+
+.text {
+    font-size: 10px;
+    margin: 0px 10px 10px;
+}
+
+
+#gallery {
+  background:#ffffff;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  padding:20px;
+  margin:20px auto;
+}
+
+#gallery img {
+    background:#ffffff;
+    width:150px;
+    margin:15px 10px;
+    padding:10px 10px 50px 10px;
+    opacity:0.8;
+    -moz-box-shadow: 0 0 5px 2px #ccc;
+    -webkit-box-shadow: 0 0 5px 2px #ccc;
+    box-shadow: 0 0 5px 2px #ccc;
+    -webkit-transform: rotate(-2deg);  /* Saf3.1+, Chrome */
+    -moz-transform: rotate(-2deg);  /* FF3.5+ */
+    -o-transform: rotate(-2deg);  /* Opera */
+    transform: rotate(-2deg);
+    -webkit-transition: all 0.4s ease-out;  /* Saf3.1+, Chrome */
+    -moz-transition: all 0.4s ease-out;     /* FF3.5+ */
+    -o-transition: all 0.4s ease-out;  /* Opera */
+    transition: all 0.4s ease-out;
+}
+
+#gallery img:nth-child(2n) {
+    -webkit-transform: rotate(2deg);  /* Saf3.1+, Chrome */
+    -moz-transform: rotate(2deg);  /* FF3.5+ */
+    -o-transform: rotate(2deg);  /* Opera */
+    transform: rotate(2deg);
+}
+
+#gallery img:hover {
+    opacity:1;
+    padding:0;
+    position:relative;
+    z-index:1;
+    -moz-box-shadow: 2px 2px 2px #888;
+    -webkit-box-shadow: 2px 2px 2px #888;
+    box-shadow: 2px 2px 2px #888;
+    -webkit-transform: rotate(0deg) scale(5);  /* Saf3.1+, Chrome */
+    -moz-transform: rotate(0deg) scale(5);  /* FF3.5+ */
+    -o-transform: rotate(0deg) scale(5);  /* Opera */
+    transform: rotate(0deg) scale(5);
+}

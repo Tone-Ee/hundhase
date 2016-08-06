@@ -1,0 +1,7 @@
+<div id="gallery" th:fragment="gallery">
+
+    <tr th:each="picture  : ${pictures}">
+        <img src='/${picture.path}' alt=''/>
+    </tr>
+
+</div>

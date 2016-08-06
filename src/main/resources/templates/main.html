@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic' rel='stylesheet' type='text/templates.css'/>
+    <link href="../static/css/format1.css" th:href="@{/css/format1.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div class="sidebar">
+    <div th:replace="fragments/navigation :: side_navigation"/>
+</div>
+
+<div class="content">
+    <div th:replace="fragments/navigation :: top_navigation"/>
+
+    <div th:replace="@{'fragments/' + ${template}} :: ${template}"/>
+
+
+</div>
+
+</body>
+</html>

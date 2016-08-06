@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: hundhase
+
+  cloud:
+    consul:
+      host: nuc
+      port: 8500
+      discovery:
+        healthCheckPath: /v1/health
+        healthCheckInterval: 15s
