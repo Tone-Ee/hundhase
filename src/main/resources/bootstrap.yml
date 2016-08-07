@@ -4,7 +4,7 @@ spring:
 
   cloud:
     consul:
-      host: nuc
+      host: 192.168.178.40
       port: 8500
       discovery:
         healthCheckPath: /v1/health

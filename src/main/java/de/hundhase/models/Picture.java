@@ -2,7 +2,6 @@ package de.hundhase.models;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.Data;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Data
 @Table(name = "pictures")
 public class Picture {
 
@@ -48,6 +46,62 @@ public class Picture {
     @Column(name = "scope")
     @JsonView(Views.Extended.class)
     private String scope;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public DateTime getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(DateTime dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
+    public DateTime getExifDate() {
+        return exifDate;
+    }
+
+    public void setExifDate(DateTime exifDate) {
+        this.exifDate = exifDate;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
 
     public static class Views {
         public interface Min {

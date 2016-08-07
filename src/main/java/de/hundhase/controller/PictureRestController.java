@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/pictures")
+@RequestMapping(value = "/v1/pictures")
 class PictureRestController implements IRestController {
 
     @Autowired
