@@ -1,11 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://nuc/homepage?zeroDateTimeBehavior=convertToNull
+
+    url: jdbc:mysql://192.168.178.40/homepage?zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: test
     password: test
 
     testWhileIdle: true
     validationQuery: SELECT 1
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     show-sql: false
