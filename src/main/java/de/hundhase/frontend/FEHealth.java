@@ -1,0 +1,16 @@
+package de.hundhase.frontend;
+
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.immutables.value.Value;
+
+@Value.Immutable
+@JsonSerialize(as = de.hundhase.frontend.ImmutableFEHealth.class)
+@JsonDeserialize(as = de.hundhase.frontend.ImmutableFEHealth.class)
+public interface FEHealth {
+
+    String UP = "UP";
+
+    String getStatus();
+}

@@ -1,7 +1,7 @@
 package de.hundhase.controller;
 
-import de.hundhase.controller.model.Health;
-import de.hundhase.controller.model.ImmutableHealth;
+import de.hundhase.frontend.FEHealth;
+import de.hundhase.frontend.ImmutableFEHealth;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +14,7 @@ class HealthRestController implements IRestController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> health(WebRequest webRequest) {
-        return ResponseEntity.ok(ImmutableHealth.builder().status(Health.UP).build());
+        return ResponseEntity.ok(ImmutableFEHealth.builder().status(FEHealth.UP).build());
     }
 
 }

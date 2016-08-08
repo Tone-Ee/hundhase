@@ -5,6 +5,8 @@ import com.ecwid.consul.v1.QueryParams;
 import com.ecwid.consul.v1.Response;
 import com.ecwid.consul.v1.catalog.model.CatalogService;
 import com.fasterxml.jackson.annotation.JsonView;
+import de.hundhase.frontend.FEPicture;
+import de.hundhase.frontend.ImmutableFEPicture;
 import de.hundhase.models.Picture;
 import de.hundhase.models.PictureDao;
 import de.hundhase.util.ConsulUtil;
@@ -34,9 +36,9 @@ class PictureRestController implements IRestController {
     @Autowired
     private PictureDao pictureDao;
 
-    @JsonView(Picture.Views.Extended.class)
+    @JsonView(FEPicture.Views.Extended.class)
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> getPictures(WebRequest webRequest) {
+    public <R> ResponseEntity<?> getPictures(WebRequest webRequest) {
         try {
             Optional<Pageable> pageable = getPageable(webRequest);
             Strategy strategy = pageable.isPresent() ? new PageableStrategy(pageable.get()) : new DefaultStrategy();
@@ -44,20 +46,14 @@ class PictureRestController implements IRestController {
             Optional<Integer> month = getIntParameter("month", webRequest);
             Optional<Integer> year = getIntParameter("year", webRequest);
 
-            Response<List<CatalogService>> listResponse = consulClient.getCatalogService("application", QueryParams.DEFAULT);
-            for (CatalogService cs : listResponse.getValue()) {
-                URL url = ConsulUtil.getURL(cs, "/v1/health");
-                System.out.println(url);
-            }
-
-            List<?> pictures;
+            List<Picture> pictures;
             if (month.isPresent() && year.isPresent()) {
                 pictures = strategy.getPictures(year.get(), month.get());
             } else {
                 pictures = strategy.getAll();
             }
 
-            return ResponseEntity.ok(pictures);
+            return ResponseEntity.ok(pictures.stream().map(this::convertPicture).collect(Collectors.toList()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -73,6 +69,16 @@ class PictureRestController implements IRestController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    public FEPicture convertPicture(Picture picture) {
+        return ImmutableFEPicture.builder()
+                .dateAdded(picture.getDateAdded())
+                .exifDate(picture.getExifDate())
+                .id(picture.getId())
+                .path(picture.getPath())
+                .scope(picture.getScope())
+                .build();
     }
 
     private interface Strategy {
